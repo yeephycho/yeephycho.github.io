@@ -107,7 +107,7 @@
 				
 				<section class="switch-part switch-part2">
 					<div class="widget tagcloud" id="js-tagcloud">
-						<a href="/tags/AlexNet/" style="font-size: 10px;">AlexNet</a> <a href="/tags/Author/" style="font-size: 10px;">Author</a> <a href="/tags/BN-Inception/" style="font-size: 10px;">BN-Inception</a> <a href="/tags/Batch-Normalization/" style="font-size: 10px;">Batch Normalization</a> <a href="/tags/Blog/" style="font-size: 10px;">Blog</a> <a href="/tags/CUDA/" style="font-size: 10px;">CUDA</a> <a href="/tags/Convolutional-Neural-Network/" style="font-size: 20px;">Convolutional Neural Network</a> <a href="/tags/GoogLeNet/" style="font-size: 10px;">GoogLeNet</a> <a href="/tags/Histogram-equalization/" style="font-size: 10px;">Histogram equalization</a> <a href="/tags/Inception-module/" style="font-size: 10px;">Inception module</a> <a href="/tags/Inception-v3/" style="font-size: 10px;">Inception-v3</a> <a href="/tags/Julia-set/" style="font-size: 10px;">Julia set</a> <a href="/tags/LeNet-5/" style="font-size: 10px;">LeNet-5</a> <a href="/tags/License/" style="font-size: 10px;">License</a> <a href="/tags/Local-Contrast-Normalization/" style="font-size: 10px;">Local Contrast Normalization</a> <a href="/tags/Local-Response-Normalization/" style="font-size: 10px;">Local Response Normalization</a> <a href="/tags/Network-Structures/" style="font-size: 10px;">Network Structures</a> <a href="/tags/Normalization-Algorithms/" style="font-size: 10px;">Normalization Algorithms</a> <a href="/tags/OpenCL/" style="font-size: 10px;">OpenCL</a> <a href="/tags/OpenCV/" style="font-size: 10px;">OpenCV</a> <a href="/tags/OpenMP/" style="font-size: 10px;">OpenMP</a> <a href="/tags/ResNet/" style="font-size: 10px;">ResNet</a>
+						<a href="/tags/AlexNet/" style="font-size: 10px;">AlexNet</a> <a href="/tags/Author/" style="font-size: 10px;">Author</a> <a href="/tags/BN-Inception/" style="font-size: 10px;">BN-Inception</a> <a href="/tags/Batch-Normalization/" style="font-size: 10px;">Batch Normalization</a> <a href="/tags/Blog/" style="font-size: 10px;">Blog</a> <a href="/tags/CUDA/" style="font-size: 10px;">CUDA</a> <a href="/tags/Convolutional-Neural-Network/" style="font-size: 20px;">Convolutional Neural Network</a> <a href="/tags/GoogLeNet/" style="font-size: 10px;">GoogLeNet</a> <a href="/tags/Histogram-equalization/" style="font-size: 10px;">Histogram equalization</a> <a href="/tags/Inception-module/" style="font-size: 10px;">Inception module</a> <a href="/tags/Inception-v3/" style="font-size: 10px;">Inception-v3</a> <a href="/tags/Input-Data/" style="font-size: 10px;">Input Data</a> <a href="/tags/Julia-set/" style="font-size: 10px;">Julia set</a> <a href="/tags/LeNet-5/" style="font-size: 10px;">LeNet-5</a> <a href="/tags/License/" style="font-size: 10px;">License</a> <a href="/tags/Local-Contrast-Normalization/" style="font-size: 10px;">Local Contrast Normalization</a> <a href="/tags/Local-Response-Normalization/" style="font-size: 10px;">Local Response Normalization</a> <a href="/tags/Machine-Learning/" style="font-size: 10px;">Machine Learning</a> <a href="/tags/Network-Structures/" style="font-size: 10px;">Network Structures</a> <a href="/tags/Normalization-Algorithms/" style="font-size: 10px;">Normalization Algorithms</a> <a href="/tags/OpenCL/" style="font-size: 10px;">OpenCL</a> <a href="/tags/OpenCV/" style="font-size: 10px;">OpenCV</a> <a href="/tags/OpenMP/" style="font-size: 10px;">OpenMP</a> <a href="/tags/ResNet/" style="font-size: 10px;">ResNet</a> <a href="/tags/Tensorflow/" style="font-size: 10px;">Tensorflow</a> <a href="/tags/Tutorial/" style="font-size: 10px;">Tutorial</a>
 					</div>
 				</section>
 				
@@ -217,6 +217,66 @@
       
         <p class="article-more-link">
           <a  href="/2090/06/07/my_first_blog/#more">more >></a>
+        </p>
+      
+      <div class="clearfix"></div>
+    </div>
+    
+  </div>
+  
+</article>
+
+
+
+
+
+
+
+
+
+  
+    <article id="post-image-data-in-tensorflow" class="article article-type-post" itemscope itemprop="blogPost">
+  
+    <div class="article-meta">
+      <a href="/2016/08/15/image-data-in-tensorflow/" class="article-date">
+  	<time datetime="2016-08-15T11:01:02.000Z" itemprop="datePublished">2016-08-15</time>
+</a>
+    </div>
+  
+  <div class="article-inner">
+    
+      <input type="hidden" class="isFancy" />
+    
+    
+      <header class="article-header">
+        
+  
+    <h1 itemprop="name">
+      <a class="article-title" href="/2016/08/15/image-data-in-tensorflow/">Step by step, A tutorial on how to feed your wwn image data to tensorflow</a>
+    </h1>
+  
+
+      </header>
+      
+    
+    <div class="article-entry" itemprop="articleBody">
+      
+        <p>This blog aims to teach you how to use your own data to train an convolutional neural network for image recognition in <a href="https://www.tensorflow.org/">tensorflow</a>. The focus will be given to how to <strong>feed your own data to the network</strong> instead of how to design the network architecture.<br>Before I started to survey <a href="https://www.tensorflow.org/">tensorflow</a>, me and my colleagues were using <a href="http://torch.ch/">Torch7</a> or <a href="http://caffe.berkeleyvision.org/">caffe</a>. They both are very good machine learning tools for neural network. The original propose for turning to tensorflow is that we believe tensorflow will have a better support on mobile side, as we all know that <a href="https://en.wikipedia.org/wiki/Android_(operating_system">Android</a>) and tensorflow are both dominated by Google.<br>Althrough Facebook’s Torch7 has already have some support on Andorid, we still believe that it’s necessary to keep an eye on Google. After a few times’ update, tensorflow on Android was lanched.<br>When comparing Torch7 and tensorflow, from a developer’s view, Torch7 is much more easier then tensorflow. Torch7 uses <a href="https://www.lua.org/">Lua</a>, even through I don’t like script language Lua (the reason I don’t like it is its name sounds odd, they say that the name “Lua” comes from the “moon” in Portuguese), I still think that Torch7 is an excellent framework. It’s fast, it’s easy and you can use it without knowing how it works at the most of the time. I used to analyze the C code of the Torch7, I should say Torch7 should be a very fast framework and the drawback is that I think Torch7 is a little bit more resource comsuming, it achieves faster training and inference speed at the cost of requiring more memory.<br>Another point is that Torch7’s I/O API (Application Programming Interface) is so user friendly, the only thing that you need to load an image it to call an imread function with the argument of “/path/of/your/image/data.jpg”.<br>
+      
+    </div>
+    
+    <div class="article-info article-info-index">
+      
+      
+	<div class="article-tag tagcloud">
+		<ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/Convolutional-Neural-Network/">Convolutional Neural Network</a></li><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/Input-Data/">Input Data</a></li><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/Machine-Learning/">Machine Learning</a></li><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/Tensorflow/">Tensorflow</a></li><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/Tutorial/">Tutorial</a></li></ul>
+	</div>
+
+      
+
+      
+        <p class="article-more-link">
+          <a  href="/2016/08/15/image-data-in-tensorflow/#more">more >></a>
         </p>
       
       <div class="clearfix"></div>

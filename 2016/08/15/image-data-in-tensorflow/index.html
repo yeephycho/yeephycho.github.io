@@ -4,17 +4,18 @@
   <meta charset="utf-8">
   
   <meta http-equiv="X-UA-Compatible" content="IE=edge" >
-  <title>Tag: AlexNet | yeephycho</title>
+  <title>Step by step, A tutorial on how to feed your wwn image data to tensorflow | yeephycho</title>
   <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
-  <meta name="description" content="github blog about Hight Performance Computing, OpenCL/CUDA, OpenMP/Pthread etc. and Machine Learning/Convolution Neural_Network etc.">
-<meta property="og:type" content="website">
-<meta property="og:title" content="yeephycho">
-<meta property="og:url" content="http://yeephycho.github.io/tags/AlexNet/index.html">
+  <meta name="description" content="This blog aims to teach you how to use your own data to train an convolutional neural network for image recognition in tensorflow. The focus will be given to how to feed your own data to the network i">
+<meta property="og:type" content="article">
+<meta property="og:title" content="Step by step, A tutorial on how to feed your wwn image data to tensorflow">
+<meta property="og:url" content="http://yeephycho.github.io/2016/08/15/image-data-in-tensorflow/index.html">
 <meta property="og:site_name" content="yeephycho">
-<meta property="og:description" content="github blog about Hight Performance Computing, OpenCL/CUDA, OpenMP/Pthread etc. and Machine Learning/Convolution Neural_Network etc.">
+<meta property="og:description" content="This blog aims to teach you how to use your own data to train an convolutional neural network for image recognition in tensorflow. The focus will be given to how to feed your own data to the network i">
+<meta property="og:updated_time" content="2016-08-15T08:55:44.101Z">
 <meta name="twitter:card" content="summary">
-<meta name="twitter:title" content="yeephycho">
-<meta name="twitter:description" content="github blog about Hight Performance Computing, OpenCL/CUDA, OpenMP/Pthread etc. and Machine Learning/Convolution Neural_Network etc.">
+<meta name="twitter:title" content="Step by step, A tutorial on how to feed your wwn image data to tensorflow">
+<meta name="twitter:description" content="This blog aims to teach you how to use your own data to train an convolutional neural network for image recognition in tensorflow. The focus will be given to how to feed your own data to the network i">
   
     <link rel="alternative" href="/atom.xml" title="yeephycho" type="application/atom+xml">
   
@@ -171,53 +172,95 @@
 	</div>
 </nav>
 
-      <div class="body-wrap">
+      <div class="body-wrap"><article id="post-image-data-in-tensorflow" class="article article-type-post" itemscope itemprop="blogPost">
   
-  
-    
-    
-      
-      
-      <section class="archives-wrap">
-        <div class="archive-year-wrap">
-          <a href="/archives/2016" class="archive-year">2016</a>
-        </div>
-        <div class="archives">
-    
-    <article class="archive-article archive-type-post">
-  <div class="archive-article-inner">
-    <header class="archive-article-header">
-      	<div class="article-meta">
-	      	<a href="/2016/07/21/A-reminder-of-algorithms-in-Convolutional-Neural-Networks-and-their-influences-I/" class="archive-article-date">
-  	<time datetime="2016-07-21T11:04:10.000Z" itemprop="datePublished">Jul 21</time>
+    <div class="article-meta">
+      <a href="/2016/08/15/image-data-in-tensorflow/" class="article-date">
+  	<time datetime="2016-08-15T11:01:02.000Z" itemprop="datePublished">2016-08-15</time>
 </a>
-        </div>
-    	 
+    </div>
   
-    <h1 itemprop="name">
-      <a class="archive-article-title" href="/2016/07/21/A-reminder-of-algorithms-in-Convolutional-Neural-Networks-and-their-influences-I/">A note to techniques in Convolutional Neural Networks and their influences I (paper summary)</a>
+  <div class="article-inner">
+    
+      <input type="hidden" class="isFancy" />
+    
+    
+      <header class="article-header">
+        
+  
+    <h1 class="article-title" itemprop="name">
+      Step by step, A tutorial on how to feed your wwn image data to tensorflow
     </h1>
   
 
-        <div class="article-info info-on-right">
-          
+      </header>
+      
+      <div class="article-info article-info-post">
+        
 	<div class="article-tag tagcloud">
-		<ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/AlexNet/">AlexNet</a></li><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/Convolutional-Neural-Network/">Convolutional Neural Network</a></li><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/GoogLeNet/">GoogLeNet</a></li><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/Inception-module/">Inception module</a></li><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/LeNet-5/">LeNet-5</a></li><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/Network-Structures/">Network Structures</a></li></ul>
+		<ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/Convolutional-Neural-Network/">Convolutional Neural Network</a></li><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/Input-Data/">Input Data</a></li><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/Machine-Learning/">Machine Learning</a></li><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/Tensorflow/">Tensorflow</a></li><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/Tutorial/">Tutorial</a></li></ul>
 	</div>
 
-          
+        
 
-        </div>
         <div class="clearfix"></div>
-    </header>
-  </div>
-</article>
-  
-  
-    </div></section>
-  
-
+      </div>
+      
     
+    <div class="article-entry" itemprop="articleBody">
+      
+        <p>This blog aims to teach you how to use your own data to train an convolutional neural network for image recognition in <a href="https://www.tensorflow.org/" target="_blank" rel="external">tensorflow</a>. The focus will be given to how to <strong>feed your own data to the network</strong> instead of how to design the network architecture.<br>Before I started to survey <a href="https://www.tensorflow.org/" target="_blank" rel="external">tensorflow</a>, me and my colleagues were using <a href="http://torch.ch/" target="_blank" rel="external">Torch7</a> or <a href="http://caffe.berkeleyvision.org/" target="_blank" rel="external">caffe</a>. They both are very good machine learning tools for neural network. The original propose for turning to tensorflow is that we believe tensorflow will have a better support on mobile side, as we all know that <a href="https://en.wikipedia.org/wiki/Android_(operating_system" target="_blank" rel="external">Android</a>) and tensorflow are both dominated by Google.<br>Althrough Facebook’s Torch7 has already have some support on Andorid, we still believe that it’s necessary to keep an eye on Google. After a few times’ update, tensorflow on Android was lanched.<br>When comparing Torch7 and tensorflow, from a developer’s view, Torch7 is much more easier then tensorflow. Torch7 uses <a href="https://www.lua.org/" target="_blank" rel="external">Lua</a>, even through I don’t like script language Lua (the reason I don’t like it is its name sounds odd, they say that the name “Lua” comes from the “moon” in Portuguese), I still think that Torch7 is an excellent framework. It’s fast, it’s easy and you can use it without knowing how it works at the most of the time. I used to analyze the C code of the Torch7, I should say Torch7 should be a very fast framework and the drawback is that I think Torch7 is a little bit more resource comsuming, it achieves faster training and inference speed at the cost of requiring more memory.<br>Another point is that Torch7’s I/O API (Application Programming Interface) is so user friendly, the only thing that you need to load an image it to call an imread function with the argument of “/path/of/your/image/data.jpg”.<br><a id="more"></a><br>But, for tensorflow, the basic tutorial didn’t tell you how to load your own data to form an efficient input data. In the official basic tutorials, they provided the way to decode the mnist dataset and cifar10 dataset, both were binary format, but our own image usually is .jpeg or .png format.<br>So, here I decided to summarize my experience on how to feed your own image data to tensorflow and build a simple conv. neural network.</p>
+
+      
+    </div>
+    
+  </div>
+  
+    
+<nav id="article-nav">
+  
+    <a href="/2090/06/07/my_first_blog/" id="article-nav-newer" class="article-nav-link-wrap">
+      <strong class="article-nav-caption"><</strong>
+      <div class="article-nav-title">
+        
+          Welcome to yeephycho&#39;s blog
+        
+      </div>
+    </a>
+  
+  
+    <a href="/2016/08/03/Normalizations-in-neural-networks/" id="article-nav-older" class="article-nav-link-wrap">
+      <div class="article-nav-title">Normalizations in neural networks</div>
+      <strong class="article-nav-caption">></strong>
+    </a>
+  
+</nav>
+
+  
+</article>
+
+
+
+
+
+
+
+
+<section id="comments">
+  <div id="disqus_thread"></div>
+    <script type="text/javascript">
+    /* * * CONFIGURATION VARIABLES: EDIT BEFORE PASTING INTO YOUR WEBPAGE * * */
+    var disqus_shortname = 'yeephycho'; // required: replace example with your forum shortname
+
+    /* * * DON'T EDIT BELOW THIS LINE * * */
+    (function() {
+      var dsq = document.createElement('script'); dsq.type = 'text/javascript'; dsq.async = true;
+      dsq.src = '//' + disqus_shortname + '.disqus.com/embed.js';
+      (document.getElementsByTagName('head')[0] || document.getElementsByTagName('body')[0]).appendChild(dsq);
+    })();
+  </script>
+  <noscript>Please enable JavaScript to view the <a href="https://disqus.com/?ref_noscript">comments powered by Disqus.</a></noscript>
+</section>
 
 </div>
       <footer id="footer">
@@ -243,9 +286,9 @@
 		mathjax: true,
 		animate: true,
 		isHome: false,
-		isPost: false,
+		isPost: true,
 		isArchive: false,
-		isTag: true,
+		isTag: false,
 		isCategory: false,
 		open_in_new: true
 	}
