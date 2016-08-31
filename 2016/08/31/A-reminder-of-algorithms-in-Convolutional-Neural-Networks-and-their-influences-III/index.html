@@ -4,17 +4,21 @@
   <meta charset="utf-8">
   
   <meta http-equiv="X-UA-Compatible" content="IE=edge" >
-  <title>Tag: GoogLeNet | yeephycho</title>
+  <title>A Note to Techniques in Convolutional Neural Networks and Their Influences III (paper summary) | yeephycho</title>
   <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
-  <meta name="description" content="github blog about Hight Performance Computing, OpenCL/CUDA, OpenMP/Pthread etc. and Machine Learning/Convolution Neural_Network etc.">
-<meta property="og:type" content="website">
-<meta property="og:title" content="yeephycho">
-<meta property="og:url" content="http://yeephycho.github.io/tags/GoogLeNet/index.html">
+  <meta name="description" content="Since we have already got some bases on how CNN works, so this post I prefer to focus more on the ideologies that make these architectures unique and the general technics that can improve the performa">
+<meta property="og:type" content="article">
+<meta property="og:title" content="A Note to Techniques in Convolutional Neural Networks and Their Influences III (paper summary)">
+<meta property="og:url" content="http://yeephycho.github.io/2016/08/31/A-reminder-of-algorithms-in-Convolutional-Neural-Networks-and-their-influences-III/index.html">
 <meta property="og:site_name" content="yeephycho">
-<meta property="og:description" content="github blog about Hight Performance Computing, OpenCL/CUDA, OpenMP/Pthread etc. and Machine Learning/Convolution Neural_Network etc.">
+<meta property="og:description" content="Since we have already got some bases on how CNN works, so this post I prefer to focus more on the ideologies that make these architectures unique and the general technics that can improve the performa">
+<meta property="og:image" content="http://yeephycho.github.io/blog_img/license.jpg">
+<meta property="og:image" content="http://yeephycho.github.io/blog_img/APACHE.jpg">
+<meta property="og:updated_time" content="2016-08-31T03:33:33.611Z">
 <meta name="twitter:card" content="summary">
-<meta name="twitter:title" content="yeephycho">
-<meta name="twitter:description" content="github blog about Hight Performance Computing, OpenCL/CUDA, OpenMP/Pthread etc. and Machine Learning/Convolution Neural_Network etc.">
+<meta name="twitter:title" content="A Note to Techniques in Convolutional Neural Networks and Their Influences III (paper summary)">
+<meta name="twitter:description" content="Since we have already got some bases on how CNN works, so this post I prefer to focus more on the ideologies that make these architectures unique and the general technics that can improve the performa">
+<meta name="twitter:image" content="http://yeephycho.github.io/blog_img/license.jpg">
   
     <link rel="alternative" href="/atom.xml" title="yeephycho" type="application/atom+xml">
   
@@ -171,53 +175,100 @@
 	</div>
 </nav>
 
-      <div class="body-wrap">
+      <div class="body-wrap"><article id="post-A-reminder-of-algorithms-in-Convolutional-Neural-Networks-and-their-influences-III" class="article article-type-post" itemscope itemprop="blogPost">
   
-  
-    
-    
-      
-      
-      <section class="archives-wrap">
-        <div class="archive-year-wrap">
-          <a href="/archives/2016" class="archive-year">2016</a>
-        </div>
-        <div class="archives">
-    
-    <article class="archive-article archive-type-post">
-  <div class="archive-article-inner">
-    <header class="archive-article-header">
-      	<div class="article-meta">
-	      	<a href="/2016/07/21/A-reminder-of-algorithms-in-Convolutional-Neural-Networks-and-their-influences-I/" class="archive-article-date">
-  	<time datetime="2016-07-21T11:04:10.000Z" itemprop="datePublished">Jul 21</time>
+    <div class="article-meta">
+      <a href="/2016/08/31/A-reminder-of-algorithms-in-Convolutional-Neural-Networks-and-their-influences-III/" class="article-date">
+  	<time datetime="2016-08-31T11:36:10.000Z" itemprop="datePublished">2016-08-31</time>
 </a>
-        </div>
-    	 
+    </div>
   
-    <h1 itemprop="name">
-      <a class="archive-article-title" href="/2016/07/21/A-reminder-of-algorithms-in-Convolutional-Neural-Networks-and-their-influences-I/">A Note to Techniques in Convolutional Neural Networks and Their Tnfluences I (paper summary)</a>
+  <div class="article-inner">
+    
+      <input type="hidden" class="isFancy" />
+    
+    
+      <header class="article-header">
+        
+  
+    <h1 class="article-title" itemprop="name">
+      A Note to Techniques in Convolutional Neural Networks and Their Influences III (paper summary)
     </h1>
   
 
-        <div class="article-info info-on-right">
-          
+      </header>
+      
+      <div class="article-info article-info-post">
+        
 	<div class="article-tag tagcloud">
-		<ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/AlexNet/">AlexNet</a></li><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/Convolutional-Neural-Network/">Convolutional Neural Network</a></li><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/GoogLeNet/">GoogLeNet</a></li><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/Inception-module/">Inception module</a></li><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/LeNet-5/">LeNet-5</a></li></ul>
+		<ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/Convolutional-Neural-Network/">Convolutional Neural Network</a></li><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/Inception-v4/">Inception-v4</a></li><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/VGGNet/">VGGNet</a></li><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/ZFNet/">ZFNet</a></li></ul>
 	</div>
 
-          
+        
 
-        </div>
         <div class="clearfix"></div>
-    </header>
-  </div>
-</article>
-  
-  
-    </div></section>
-  
-
+      </div>
+      
     
+    <div class="article-entry" itemprop="articleBody">
+      
+        <p>Since we have already got some bases on how CNN works, so this post I prefer to focus more on the ideologies that make these architectures unique and the general technics that can improve the performace of the CNN. If you are new to this, please visit my previous <a href="http://yeephycho.github.io/2016/08/02/A-reminder-of-algorithms-in-Convolutional-Neural-Networks-and-their-influences-II/">post</a>, I believe it can help you to understand the paper or at least get the key point of the paper.</p>
+<h2 id="ZFNet"><a href="#ZFNet" class="headerlink" title="ZFNet"></a><strong>ZFNet</strong></h2><p>Related paper is:<a href="https://arxiv.org/pdf/1311.2901v3.pdf" target="_blank" rel="external">Visualizing and Understanding Convolutional Networks</a>, published on Nov. 2013.<br>TBC…</p>
+<h2 id="VGGNet"><a href="#VGGNet" class="headerlink" title="VGGNet"></a><strong>VGGNet</strong></h2><p>Related paper is:<a href="https://arxiv.org/abs/1409.1556" target="_blank" rel="external">Very Deep Convolutional Networks for Large-Scale Image Recognition</a>, published on Sep. 2014.<br>TBC…</p>
+<a id="more"></a>
+<h2 id="Inception-v4-Inception-ResNet"><a href="#Inception-v4-Inception-ResNet" class="headerlink" title="Inception-v4, Inception-ResNet"></a><strong>Inception-v4, Inception-ResNet</strong></h2><p>Related paper is: <a href="http://arxiv.org/pdf/1602.07261v2.pdf" target="_blank" rel="external">Inception-v4, Inception-ResNet and the Impact of Residual Connections on Learning</a>, published on Aug. 2016 by Google.<br>TBC…</p>
+<p><br></p>
+<h2 id="License"><a href="#License" class="headerlink" title="License"></a>License</h2><div align="center"><br>The content of this blog itself is licensed under the <a href="https://creativecommons.org/licenses/by-sa/4.0/" target="_blank" rel="external">Creative Commons Attribution 4.0 International License</a>.<br><img src="http://yeephycho.github.io/blog_img/license.jpg" alt="CC-BY-SA LICENCES"><br><br>The containing source code (if applicable) and the source code used to format and display that content is licensed under the <a href="http://www.apache.org/licenses/LICENSE-2.0" target="_blank" rel="external">Apache License 2.0</a>.<br><strong>Copyright [2016] [yeephycho]</strong><br>Licensed under the Apache License, Version 2.0 (the “License”);<br>you may not use this file except in compliance with the License.<br>You may obtain a copy of the License at<br><a href="http://www.apache.org/licenses/LICENSE-2.0" target="_blank" rel="external">Apache License 2.0</a><br>Unless required by applicable law or agreed to in writing, software<br>distributed under the License is distributed on an “AS IS” BASIS,<br>WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either<br>express or implied. See the License for the specific language<br>governing permissions and limitations under the License.<br><img src="http://yeephycho.github.io/blog_img/APACHE.jpg" alt="APACHE LICENCES"><br></div>
+      
+    </div>
+    
+  </div>
+  
+    
+<nav id="article-nav">
+  
+    <a href="/2090/06/07/my_first_blog/" id="article-nav-newer" class="article-nav-link-wrap">
+      <strong class="article-nav-caption"><</strong>
+      <div class="article-nav-title">
+        
+          Welcome to Yeephycho&#39;s Blog
+        
+      </div>
+    </a>
+  
+  
+    <a href="/2016/08/15/image-data-in-tensorflow/" id="article-nav-older" class="article-nav-link-wrap">
+      <div class="article-nav-title">Step by Step, A Tutorial on How to Feed Your Own Image Data to Tensorflow</div>
+      <strong class="article-nav-caption">></strong>
+    </a>
+  
+</nav>
+
+  
+</article>
+
+
+
+
+
+
+
+
+<section id="comments">
+  <div id="disqus_thread"></div>
+    <script type="text/javascript">
+    /* * * CONFIGURATION VARIABLES: EDIT BEFORE PASTING INTO YOUR WEBPAGE * * */
+    var disqus_shortname = 'yeephycho'; // required: replace example with your forum shortname
+
+    /* * * DON'T EDIT BELOW THIS LINE * * */
+    (function() {
+      var dsq = document.createElement('script'); dsq.type = 'text/javascript'; dsq.async = true;
+      dsq.src = '//' + disqus_shortname + '.disqus.com/embed.js';
+      (document.getElementsByTagName('head')[0] || document.getElementsByTagName('body')[0]).appendChild(dsq);
+    })();
+  </script>
+  <noscript>Please enable JavaScript to view the <a href="https://disqus.com/?ref_noscript">comments powered by Disqus.</a></noscript>
+</section>
 
 </div>
       <footer id="footer">
@@ -243,9 +294,9 @@
 		mathjax: true,
 		animate: true,
 		isHome: false,
-		isPost: false,
+		isPost: true,
 		isArchive: false,
-		isTag: true,
+		isTag: false,
 		isCategory: false,
 		open_in_new: true
 	}
