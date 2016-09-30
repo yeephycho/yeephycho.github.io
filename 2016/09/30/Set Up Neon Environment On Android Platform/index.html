@@ -16,7 +16,7 @@
 <meta property="og:image" content="http://yeephycho.github.io/blog_img/Neon_f32_add.jpg">
 <meta property="og:image" content="http://yeephycho.github.io/blog_img/license.jpg">
 <meta property="og:image" content="http://yeephycho.github.io/blog_img/APACHE.jpg">
-<meta property="og:updated_time" content="2016-09-30T09:50:09.247Z">
+<meta property="og:updated_time" content="2016-09-30T09:57:26.853Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="Set Up Neon Environment On Android Platform">
 <meta name="twitter:description" content="This post is a guide to set up Neon environment under Android Platform.Neon is a kind of hardware based software acceleration technology maintained by ARM.">
@@ -321,7 +321,8 @@
 } <span class="comment">// End of extern "C", JNI standard format.</span>
 </code></pre>
 <p>Under Android Studio logcat window, search “Neon_Environment_Set_Up”, and on my PC, it shows:<div align="center"><br><img src="http://yeephycho.github.io/blog_img/Neon_f32_add.jpg" alt="Profiling of Neon under Android of floating point addition operation"><br></div></p>
-<p><br></p>
+<p>If you are interested, try multi-level parallel computing by adding OpenMP. Re-design the program may realize multi-issue and branch prediction feature of your CPU, but it quite depends on your platform, Neon inline assembly may provide even better performance.</p>
+<p>Cheers!<br><br></p>
 <h2 id="License"><a href="#License" class="headerlink" title="License"></a>License</h2><div align="center"><br>The content of this blog itself is licensed under the <a href="https://creativecommons.org/licenses/by-sa/4.0/" target="_blank" rel="external">Creative Commons Attribution 4.0 International License</a>.<br><img src="http://yeephycho.github.io/blog_img/license.jpg" alt="CC-BY-SA LICENCES"><br><br>The containing source code (if applicable) and the source code used to format and display that content is licensed under the <a href="http://www.apache.org/licenses/LICENSE-2.0" target="_blank" rel="external">Apache License 2.0</a>.<br><strong>Copyright [2016] [yeephycho]</strong><br>Licensed under the Apache License, Version 2.0 (the “License”);<br>you may not use this file except in compliance with the License.<br>You may obtain a copy of the License at<br><a href="http://www.apache.org/licenses/LICENSE-2.0" target="_blank" rel="external">Apache License 2.0</a><br>Unless required by applicable law or agreed to in writing, software<br>distributed under the License is distributed on an “AS IS” BASIS,<br>WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either<br>express or implied. See the License for the specific language<br>governing permissions and limitations under the License.<br><img src="http://yeephycho.github.io/blog_img/APACHE.jpg" alt="APACHE LICENCES"><br></div>
 
 
