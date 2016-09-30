@@ -1,0 +1,455 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <meta charset="utf-8">
+  
+  <meta http-equiv="X-UA-Compatible" content="IE=edge" >
+  <title>Set Up Neon Environment On Android Platform | yeephycho</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
+  <meta name="description" content="This post is a guide to set up Neon environment under Android Platform.Neon is a kind of hardware based software acceleration technology maintained by ARM.">
+<meta property="og:type" content="article">
+<meta property="og:title" content="Set Up Neon Environment On Android Platform">
+<meta property="og:url" content="http://yeephycho.github.io/2016/09/30/Set Up Neon Environment On Android Platform/index.html">
+<meta property="og:site_name" content="yeephycho">
+<meta property="og:description" content="This post is a guide to set up Neon environment under Android Platform.Neon is a kind of hardware based software acceleration technology maintained by ARM.">
+<meta property="og:image" content="http://yeephycho.github.io/blog_img/Neon.jpg">
+<meta property="og:image" content="http://yeephycho.github.io/blog_img/Neon_f32_add.jpg">
+<meta property="og:image" content="http://yeephycho.github.io/blog_img/license.jpg">
+<meta property="og:image" content="http://yeephycho.github.io/blog_img/APACHE.jpg">
+<meta property="og:updated_time" content="2016-09-30T09:48:25.800Z">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:title" content="Set Up Neon Environment On Android Platform">
+<meta name="twitter:description" content="This post is a guide to set up Neon environment under Android Platform.Neon is a kind of hardware based software acceleration technology maintained by ARM.">
+<meta name="twitter:image" content="http://yeephycho.github.io/blog_img/Neon.jpg">
+  
+    <link rel="alternative" href="/atom.xml" title="yeephycho" type="application/atom+xml">
+  
+  
+    <link rel="icon" href="/favicon.png">
+  
+  <link rel="stylesheet" href="/css/style.css">
+</head>
+
+<body>
+  <div id="container">
+    <div class="left-col">
+    <div class="overlay"></div>
+<div class="intrude-less">
+	<header id="header" class="inner">
+		<a href="/" class="profilepic">
+			
+			<img lazy-src="http://yeephycho.github.io/blog_img/zombie2.jpg" class="js-avatar">
+			
+		</a>
+
+		<hgroup>
+		  <h1 class="header-author"><a href="/">yeephycho</a></h1>
+		</hgroup>
+
+		
+		<p class="header-subtitle">Possibly, yeephycho is a phycho.</p>
+		
+
+		
+			<div class="switch-btn">
+				<div class="icon">
+					<div class="icon-ctn">
+						<div class="icon-wrap icon-house" data-idx="0">
+							<div class="birdhouse"></div>
+							<div class="birdhouse_holes"></div>
+						</div>
+						<div class="icon-wrap icon-ribbon hide" data-idx="1">
+							<div class="ribbon"></div>
+						</div>
+						
+						
+						<div class="icon-wrap icon-me hide" data-idx="3">
+							<div class="user"></div>
+							<div class="shoulder"></div>
+						</div>
+						
+					</div>
+					
+				</div>
+				<div class="tips-box hide">
+					<div class="tips-arrow"></div>
+					<ul class="tips-inner">
+						<li>Menu</li>
+						<li>Tags</li>
+						
+						
+						<li>About</li>
+						
+					</ul>
+				</div>
+			</div>
+		
+
+		<div class="switch-area">
+			<div class="switch-wrap">
+				<section class="switch-part switch-part1">
+					<nav class="header-menu">
+						<ul>
+						
+							<li><a href="/yeephycho.github.io">Home Page</a></li>
+				        
+							<li><a href="/archives">All article</a></li>
+				        
+						</ul>
+					</nav>
+					<nav class="header-nav">
+						<div class="social">
+							
+								<a class="github" target="_blank" href="https://github.com/yeephycho" title="github">github</a>
+					        
+								<a class="linkedin" target="_blank" href="https://www.linkedin.com/in/%E4%BB%A5%E7%92%87-%E8%83%A1-82ab00102" title="linkedin">linkedin</a>
+					        
+								<a class="facebook" target="_blank" href="https://www.facebook.com/profile.php?id=100004383827370" title="facebook">facebook</a>
+					        
+						</div>
+					</nav>
+				</section>
+				
+				
+				<section class="switch-part switch-part2">
+					<div class="widget tagcloud" id="js-tagcloud">
+						<a href="/tags/AlexNet/" style="font-size: 10px;">AlexNet</a> <a href="/tags/Android/" style="font-size: 10px;">Android</a> <a href="/tags/Author/" style="font-size: 10px;">Author</a> <a href="/tags/BN-Inception/" style="font-size: 10px;">BN-Inception</a> <a href="/tags/Batch-Normalization/" style="font-size: 10px;">Batch Normalization</a> <a href="/tags/Blog/" style="font-size: 10px;">Blog</a> <a href="/tags/C-C/" style="font-size: 15px;">C/C++</a> <a href="/tags/CUDA/" style="font-size: 10px;">CUDA</a> <a href="/tags/Convolutional-Neural-Network/" style="font-size: 20px;">Convolutional Neural Network</a> <a href="/tags/GoogLeNet/" style="font-size: 10px;">GoogLeNet</a> <a href="/tags/Histogram-equalization/" style="font-size: 10px;">Histogram equalization</a> <a href="/tags/Inception-module/" style="font-size: 10px;">Inception module</a> <a href="/tags/Inception-v3/" style="font-size: 10px;">Inception-v3</a> <a href="/tags/Inception-v4/" style="font-size: 10px;">Inception-v4</a> <a href="/tags/Input-Data/" style="font-size: 10px;">Input Data</a> <a href="/tags/Julia-set/" style="font-size: 10px;">Julia set</a> <a href="/tags/LeNet-5/" style="font-size: 10px;">LeNet-5</a> <a href="/tags/License/" style="font-size: 10px;">License</a> <a href="/tags/Local-Contrast-Normalization/" style="font-size: 10px;">Local Contrast Normalization</a> <a href="/tags/Local-Response-Normalization/" style="font-size: 10px;">Local Response Normalization</a> <a href="/tags/Machine-Learning/" style="font-size: 15px;">Machine Learning</a> <a href="/tags/Neon/" style="font-size: 10px;">Neon</a> <a href="/tags/Neural-Style/" style="font-size: 10px;">Neural Style</a> <a href="/tags/OpenCL/" style="font-size: 10px;">OpenCL</a> <a href="/tags/OpenCV/" style="font-size: 10px;">OpenCV</a> <a href="/tags/OpenMP/" style="font-size: 10px;">OpenMP</a> <a href="/tags/ResNet/" style="font-size: 10px;">ResNet</a> <a href="/tags/Tensorflow/" style="font-size: 10px;">Tensorflow</a> <a href="/tags/Tensorflow-Torch7/" style="font-size: 10px;">Tensorflow/Torch7</a> <a href="/tags/Tutorial/" style="font-size: 10px;">Tutorial</a> <a href="/tags/VGGNet/" style="font-size: 10px;">VGGNet</a> <a href="/tags/ZFNet/" style="font-size: 10px;">ZFNet</a> <a href="/tags/gdb/" style="font-size: 10px;">gdb</a>
+					</div>
+				</section>
+				
+				
+				
+
+				
+				
+				<section class="switch-part switch-part3">
+				
+					<div id="js-aboutme">Currently work for TCL Corporate Research Hong Kong Co., Ltd. Interested in high performance computing and machine learning.</div>
+				</section>
+				
+			</div>
+		</div>
+	</header>				
+</div>
+
+    </div>
+    <div class="mid-col">
+      <nav id="mobile-nav">
+  	<div class="overlay">
+  		<div class="slider-trigger"></div>
+  		<h1 class="header-author js-mobile-header hide">yeephycho</h1>
+  	</div>
+	<div class="intrude-less">
+		<header id="header" class="inner">
+			<div class="profilepic">
+			
+				<img lazy-src="http://yeephycho.github.io/blog_img/zombie2.jpg" class="js-avatar">
+			
+			</div>
+			<hgroup>
+			  <h1 class="header-author">yeephycho</h1>
+			</hgroup>
+			
+			<p class="header-subtitle">Possibly, yeephycho is a phycho.</p>
+			
+			<nav class="header-menu">
+				<ul>
+				
+					<li><a href="/yeephycho.github.io">Home Page</a></li>
+		        
+					<li><a href="/archives">All article</a></li>
+		        
+		        <div class="clearfix"></div>
+				</ul>
+			</nav>
+			<nav class="header-nav">
+				<div class="social">
+					
+						<a class="github" target="_blank" href="https://github.com/yeephycho" title="github">github</a>
+			        
+						<a class="linkedin" target="_blank" href="https://www.linkedin.com/in/%E4%BB%A5%E7%92%87-%E8%83%A1-82ab00102" title="linkedin">linkedin</a>
+			        
+						<a class="facebook" target="_blank" href="https://www.facebook.com/profile.php?id=100004383827370" title="facebook">facebook</a>
+			        
+				</div>
+			</nav>
+		</header>				
+	</div>
+</nav>
+
+      <div class="body-wrap"><article id="post-Set Up Neon Environment On Android Platform" class="article article-type-post" itemscope itemprop="blogPost">
+  
+    <div class="article-meta">
+      <a href="/2016/09/30/Set Up Neon Environment On Android Platform/" class="article-date">
+  	<time datetime="2016-09-30T08:33:00.000Z" itemprop="datePublished">2016-09-30</time>
+</a>
+    </div>
+  
+  <div class="article-inner">
+    
+      <input type="hidden" class="isFancy" />
+    
+    
+      <header class="article-header">
+        
+  
+    <h1 class="article-title" itemprop="name">
+      Set Up Neon Environment On Android Platform
+    </h1>
+  
+
+      </header>
+      
+      <div class="article-info article-info-post">
+        
+	<div class="article-tag tagcloud">
+		<ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/Android/">Android</a></li><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/C-C/">C/C++</a></li><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/Neon/">Neon</a></li></ul>
+	</div>
+
+        
+
+        <div class="clearfix"></div>
+      </div>
+      
+    
+    <div class="article-entry" itemprop="articleBody">
+      
+        <p>This post is a guide to set up Neon environment under Android Platform.<div align="center"><br><img src="http://yeephycho.github.io/blog_img/Neon.jpg" alt="Neon Technology"><br></div><br><a href="http://www.arm.com/zh/products/processors/technologies/neon.php" target="_blank" rel="external">Neon</a> is a kind of hardware based software acceleration technology maintained by ARM.<br><a id="more"></a><br>Today, most of our mobilephone’s CPU support Neon. From hardware’s perspective, neon co-processor has the feature of </p>
+<ul>
+<li>Wide bit width. D register is 64-bit width and Q register is 128-bit width; </li>
+<li>Parallel bus operation, ARM claims that Q register can load 128-bit consistent memory simultaneously in parallel; </li>
+<li>Parallel ALU operation， also, ARM claims that Neon can do 4 integer addition operation simultaneously in parallel.<br>If your CPU has a VFP(Vector Floating Point Processor, another co-processor in ARM architecture.), Neon can cooperate with VFP to provide floating point operation support.</li>
+</ul>
+<h2 id="Platform"><a href="#Platform" class="headerlink" title="Platform"></a>Platform</h2><p>My hardware platform is a mobilephone, CPU is <a href="http://mediatek-helio.com/x20/" target="_blank" rel="external">X20</a> from Mediatek, it has 2-Cortex A72 core and 8-Cortex A53 cores. And it supports Neon technology and VFP.<br>Software platform is Android Studio 2.1.3, android sdk 24.0.1 and NDK-r12 I suppose. NDK support is important because we are going to use Jave Native Interface (JNI) to do the development, JNI is a interface between Java and C/C++, we can use C/C++ to implement Java method through JNI.</p>
+<h2 id="Setting"><a href="#Setting" class="headerlink" title="Setting"></a>Setting</h2><p>Here is my Android.mk file<br><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br></pre></td><td class="code"><pre><span class="line">LOCAL_PATH := $(call my-dir)</span><br><span class="line">include $(CLEAR_VARS)</span><br><span class="line"></span><br><span class="line">LOCAL_LDLIBS := -llog</span><br><span class="line"></span><br><span class="line"><span class="comment"># Enable neon instruction set, very important to Neon development.</span></span><br><span class="line">LOCAL_ARM_NEON := <span class="literal">true</span></span><br><span class="line"></span><br><span class="line">LOCAL_MODULE := addTwoArray</span><br><span class="line">LOCAL_SRC_FILES := addtwoarray.cpp</span><br><span class="line"></span><br><span class="line"><span class="comment"># Enable OpenMP if you like, doesn't matter here.</span></span><br><span class="line">LOCAL_CFLAGS += -fopenmp</span><br><span class="line">LOCAL_LDFLAGS += -fopenmp</span><br><span class="line"></span><br><span class="line">LOCAL_LDLIBS += -landroid -llog</span><br><span class="line"></span><br><span class="line">include $(BUILD_SHARED_LIBRARY)</span><br></pre></td></tr></table></figure></p>
+<h2 id="Code"><a href="#Code" class="headerlink" title="Code"></a>Code</h2><h3 id="Java-activity"><a href="#Java-activity" class="headerlink" title="Java activity:"></a>Java activity:</h3><figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">package</span> com.yeephycho.twoarraysum;</span><br><span class="line"></span><br><span class="line"><span class="keyword">import</span> android.support.v7.app.AppCompatActivity;</span><br><span class="line"><span class="keyword">import</span> android.os.Bundle;</span><br><span class="line"><span class="keyword">import</span> android.util.Log;</span><br><span class="line"></span><br><span class="line"><span class="keyword">public</span> <span class="class"><span class="keyword">class</span> <span class="title">MainActivity</span> <span class="keyword">extends</span> <span class="title">AppCompatActivity</span> </span>&#123;</span><br><span class="line">    <span class="meta">@Override</span></span><br><span class="line">    <span class="function"><span class="keyword">protected</span> <span class="keyword">void</span> <span class="title">onCreate</span><span class="params">(Bundle savedInstanceState)</span> </span>&#123;</span><br><span class="line">        <span class="keyword">super</span>.onCreate(savedInstanceState);</span><br><span class="line">        setContentView(R.layout.activity_main);</span><br><span class="line">        Log.d(<span class="string">"Neon_Environment_Set_Up"</span>, <span class="string">"onCreate: "</span> + Calculator.addTwoArrays(<span class="keyword">new</span> <span class="keyword">float</span>[]&#123;<span class="number">1.0f</span>&#125;, <span class="keyword">new</span> <span class="keyword">float</span>[]&#123;<span class="number">1.0f</span>&#125;));</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<h3 id="Java-Method-defination"><a href="#Java-Method-defination" class="headerlink" title="Java Method defination:"></a>Java Method defination:</h3><figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">package</span> com.yeephycho.twoarraysum;</span><br><span class="line"></span><br><span class="line"><span class="keyword">public</span> <span class="class"><span class="keyword">class</span> <span class="title">Calculator</span> </span>&#123;</span><br><span class="line">    <span class="keyword">static</span> &#123;</span><br><span class="line">        System.loadLibrary(<span class="string">"addTwoArray"</span>);</span><br><span class="line">    &#125;</span><br><span class="line">    <span class="function"><span class="keyword">public</span> <span class="keyword">static</span> <span class="keyword">native</span> <span class="keyword">float</span> <span class="title">addTwoArrays</span><span class="params">(<span class="keyword">float</span>[] a, <span class="keyword">float</span>[] b)</span></span>;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<h3 id="JNI-method-implementation"><a href="#JNI-method-implementation" class="headerlink" title="JNI method implementation"></a>JNI method implementation</h3><p>Note that I used a few for loops in order to make the time profiling information obvious.</p>
+<pre><code class="C"><span class="meta">#<span class="meta-keyword">include</span> <span class="string">"com_yeephycho_twoarraysum_Calculator.h"</span></span>
+
+<span class="meta">#<span class="meta-keyword">include</span> <span class="meta-string">&lt;stdio.h&gt;</span></span>
+<span class="meta">#<span class="meta-keyword">include</span> <span class="meta-string">&lt;time.h&gt;</span></span>
+
+<span class="meta">#<span class="meta-keyword">include</span> <span class="meta-string">&lt;stdlib.h&gt;</span></span>
+<span class="meta">#<span class="meta-keyword">include</span> <span class="meta-string">&lt;android/log.h&gt;</span></span>
+<span class="meta">#<span class="meta-keyword">include</span> <span class="meta-string">&lt;arm_neon.h&gt;</span></span>
+
+<span class="meta">#<span class="meta-keyword">include</span> <span class="meta-string">&lt;omp.h&gt;</span></span>
+
+<span class="meta">#<span class="meta-keyword">define</span> TAG <span class="string">"Neon_Environment_Set_Up"</span></span>
+<span class="meta">#<span class="meta-keyword">define</span> LOGD(...) __android_log_print(ANDROID_LOG_DEBUG,TAG ,__VA_ARGS__)</span>
+
+<span class="keyword">extern</span> <span class="string">"C"</span> {
+<span class="comment">// Time profiling function, count time in milliseconds.</span>
+<span class="function"><span class="keyword">static</span> <span class="keyword">double</span> <span class="title">currentTimeInMilliseconds</span><span class="params">()</span> </span>{
+    <span class="keyword">struct</span> timespec res;
+    clock_gettime(CLOCK_REALTIME, &amp;res);
+    <span class="keyword">return</span> <span class="number">1000.0</span> * res.tv_sec + (<span class="keyword">double</span>) res.tv_nsec / <span class="number">1e6</span>;
+
+}
+<span class="comment">// JNI standard format. Inputs are two input arrays, output is a float number.</span>
+<span class="function">JNIEXPORT jfloat JNICALL <span class="title">Java_com_yeephycho_twoarraysum_Calculator_addTwoArrays</span><span class="params">(JNIEnv *, jclass, jfloatArray, jfloatArray)</span></span>;
+<span class="function">JNIEXPORT jfloat JNICALL <span class="title">Java_com_yeephycho_twoarraysum_Calculator_addTwoArrays</span><span class="params">(JNIEnv *, jclass, jfloatArray a, jfloatArray b)</span></span>{
+    jfloat c = <span class="number">0.01f</span>; <span class="comment">// Return value, will be printed through Android studio logcat.</span>
+
+    <span class="keyword">float</span> array_1[<span class="number">136000</span>]; <span class="comment">// Define array and do the initialization.</span>
+    <span class="keyword">float</span> array_2[<span class="number">136000</span>]; <span class="comment">// Note that memset is not feasible here because we defined array of floats.</span>
+
+    <span class="keyword">for</span>(<span class="keyword">int</span> t = <span class="number">0</span>; t &lt; <span class="number">50</span>; t++){
+        <span class="keyword">for</span>(<span class="keyword">int</span> i = <span class="number">0</span>; i &lt; <span class="number">136000</span>; i++){
+            array_1[i] = <span class="number">1.0f</span>;
+            array_2[i] = <span class="number">2.0f</span>;
+        }
+    }
+
+    <span class="keyword">unsigned</span> <span class="keyword">long</span> <span class="keyword">long</span> time[<span class="number">50</span>]; <span class="comment">// An empty array to cache time profiling information.</span>
+    <span class="keyword">unsigned</span> <span class="keyword">long</span> <span class="keyword">long</span> start, end;
+
+    <span class="keyword">for</span>(<span class="keyword">int</span> t = <span class="number">0</span>; t &lt; <span class="number">50</span>; t++){
+        start = currentTimeInMilliseconds();
+        <span class="keyword">for</span>(<span class="keyword">int</span> index = <span class="number">0</span>; index &lt; <span class="number">100</span>; index ++){
+            <span class="keyword">for</span>(<span class="keyword">int</span> i = <span class="number">0</span>; i &lt; <span class="number">136000</span>; i++){
+                array_1[i] += array_2[i];
+            }
+        }
+        end = currentTimeInMilliseconds();
+        time[t] = end - start;
+    }
+    <span class="keyword">for</span>(<span class="keyword">int</span> t = <span class="number">1</span>; t &lt; <span class="number">50</span>; t++){
+        time[<span class="number">0</span>] += time[t];
+    }
+    c = array_1[<span class="number">0</span>]; <span class="comment">// Return the first float number of array_1.</span>
+
+    LOGD(<span class="string">"PURE C TIME COST = %llu"</span>, time[<span class="number">0</span>]);
+    LOGD(<span class="string">"return value = %lf"</span>,c);
+
+    <span class="comment">// Clean array_1 and array_2.</span>
+    <span class="keyword">for</span>(<span class="keyword">int</span> t = <span class="number">0</span>; t &lt; <span class="number">50</span>; t++){
+        <span class="keyword">for</span>(<span class="keyword">int</span> i = <span class="number">0</span>; i &lt; <span class="number">136000</span>; i++){
+            array_1[i] = <span class="number">1.0f</span>;
+            array_2[i] = <span class="number">2.0f</span>;
+        }
+    }
+
+    <span class="keyword">float32x4_t</span> n_array_1; <span class="comment">// Define two Neon Q register that cache 4 32-bit float number.</span>
+    <span class="keyword">float32x4_t</span> n_array_2;
+
+    <span class="keyword">for</span>(<span class="keyword">int</span> t = <span class="number">0</span>; t &lt; <span class="number">50</span>; t++){
+        start = currentTimeInMilliseconds();
+            <span class="keyword">for</span>(<span class="keyword">int</span> index = <span class="number">0</span>; index &lt; <span class="number">100</span>; index ++){
+                <span class="keyword">for</span>(<span class="keyword">int</span> i = <span class="number">0</span>; i &lt; <span class="number">136000</span>; i+=<span class="number">4</span>){
+                n_array_1 = vld1q_f32(array_1+i); <span class="comment">// Load first number.</span>
+                n_array_2 = vld1q_f32(array_2+i); <span class="comment">// Load second number.</span>
+                n_array_1 = vaddq_f32(n_array_1, n_array_2); <span class="comment">// Add two numbers together.</span>
+                vst1q_f32(array_1+i, n_array_1); <span class="comment">// Store the result to array_1.</span>
+            }
+        }
+        end = currentTimeInMilliseconds();
+        time[t] = end - start;
+    }
+
+    <span class="keyword">for</span>(<span class="keyword">int</span> t = <span class="number">1</span>; t &lt; <span class="number">50</span>; t++){
+        time[<span class="number">0</span>] += time[t];
+    }
+    c = array_1[<span class="number">0</span>];
+
+    LOGD(<span class="string">"NEON INTRINSIC TIME COST = %llu"</span>, time[<span class="number">0</span>]);
+    LOGD(<span class="string">"return value = %lf"</span>,c);
+    <span class="keyword">return</span> c;
+}
+
+} <span class="comment">// End of extern "C", JNI standard format.</span>
+</code></pre>
+<p>Under Android Studio logcat window, search “Neon_Environment_Set_Up”, and on my PC, it shows:<div align="center"><br><img src="http://yeephycho.github.io/blog_img/Neon_f32_add.jpg" alt="Profiling of Neon under Android of floating point addition operation"><br></div></p>
+<p><br></p>
+<h2 id="License"><a href="#License" class="headerlink" title="License"></a>License</h2><div align="center"><br>The content of this blog itself is licensed under the <a href="https://creativecommons.org/licenses/by-sa/4.0/" target="_blank" rel="external">Creative Commons Attribution 4.0 International License</a>.<br><img src="http://yeephycho.github.io/blog_img/license.jpg" alt="CC-BY-SA LICENCES"><br><br>The containing source code (if applicable) and the source code used to format and display that content is licensed under the <a href="http://www.apache.org/licenses/LICENSE-2.0" target="_blank" rel="external">Apache License 2.0</a>.<br><strong>Copyright [2016] [yeephycho]</strong><br>Licensed under the Apache License, Version 2.0 (the “License”);<br>you may not use this file except in compliance with the License.<br>You may obtain a copy of the License at<br><a href="http://www.apache.org/licenses/LICENSE-2.0" target="_blank" rel="external">Apache License 2.0</a><br>Unless required by applicable law or agreed to in writing, software<br>distributed under the License is distributed on an “AS IS” BASIS,<br>WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either<br>express or implied. See the License for the specific language<br>governing permissions and limitations under the License.<br><img src="http://yeephycho.github.io/blog_img/APACHE.jpg" alt="APACHE LICENCES"><br></div>
+
+
+      
+    </div>
+    
+  </div>
+  
+    
+<nav id="article-nav">
+  
+    <a href="/2090/06/07/my_first_blog/" id="article-nav-newer" class="article-nav-link-wrap">
+      <strong class="article-nav-caption"><</strong>
+      <div class="article-nav-title">
+        
+          Welcome to Yeephycho&#39;s Blog
+        
+      </div>
+    </a>
+  
+  
+    <a href="/2016/09/22/A Quick GDB tutorial/" id="article-nav-older" class="article-nav-link-wrap">
+      <div class="article-nav-title">A Quick GDB Tutorial</div>
+      <strong class="article-nav-caption">></strong>
+    </a>
+  
+</nav>
+
+  
+</article>
+
+
+
+
+
+
+
+
+<section id="comments">
+  <div id="disqus_thread"></div>
+    <script type="text/javascript">
+    /* * * CONFIGURATION VARIABLES: EDIT BEFORE PASTING INTO YOUR WEBPAGE * * */
+    var disqus_shortname = 'yeephycho'; // required: replace example with your forum shortname
+
+    /* * * DON'T EDIT BELOW THIS LINE * * */
+    (function() {
+      var dsq = document.createElement('script'); dsq.type = 'text/javascript'; dsq.async = true;
+      dsq.src = '//' + disqus_shortname + '.disqus.com/embed.js';
+      (document.getElementsByTagName('head')[0] || document.getElementsByTagName('body')[0]).appendChild(dsq);
+    })();
+  </script>
+  <noscript>Please enable JavaScript to view the <a href="https://disqus.com/?ref_noscript">comments powered by Disqus.</a></noscript>
+</section>
+
+</div>
+      <footer id="footer">
+  <div class="outer">
+    <div id="footer-info">
+    	<div class="footer-left">
+    		&copy; 2016 yeephycho
+    	</div>
+      	<div class="footer-right">
+      		<a href="http://hexo.io/" target="_blank">Hexo</a>  Theme <a href="https://github.com/litten/hexo-theme-yilia" target="_blank">Yilia</a> by Litten
+      	</div>
+    </div>
+  </div>
+</footer>
+    </div>
+    
+  <link rel="stylesheet" href="/fancybox/jquery.fancybox.css">
+
+
+<script>
+	var yiliaConfig = {
+		fancybox: true,
+		mathjax: true,
+		animate: true,
+		isHome: false,
+		isPost: true,
+		isArchive: false,
+		isTag: false,
+		isCategory: false,
+		open_in_new: true
+	}
+</script>
+<script src="http://7.url.cn/edu/jslib/comb/require-2.1.6,jquery-1.9.1.min.js"></script>
+<script src="/js/main.js"></script>
+
+
+
+<!-- Google Analytics -->
+<script type="text/javascript">
+(function(i,s,o,g,r,a,m){i['GoogleAnalyticsObject']=r;i[r]=i[r]||function(){
+(i[r].q=i[r].q||[]).push(arguments)},i[r].l=1*new Date();a=s.createElement(o),
+m=s.getElementsByTagName(o)[0];a.async=1;a.src=g;m.parentNode.insertBefore(a,m)
+})(window,document,'script','//www.google-analytics.com/analytics.js','ga');
+
+ga('create', 'UA-79750926-1', 'auto');
+ga('send', 'pageview');
+
+</script>
+<!-- End Google Analytics -->
+
+
+
+
+<script type="text/x-mathjax-config">
+MathJax.Hub.Config({
+    tex2jax: {
+        inlineMath: [ ['$','$'], ["\\(","\\)"]  ],
+        processEscapes: true,
+        skipTags: ['script', 'noscript', 'style', 'textarea', 'pre', 'code']
+    }
+});
+
+MathJax.Hub.Queue(function() {
+    var all = MathJax.Hub.getAllJax(), i;
+    for(i=0; i < all.length; i += 1) {
+        all[i].SourceElement().parentNode.className += ' has-jax';                 
+    }       
+});
+</script>
+
+<script type="text/javascript" src="http://cdn.mathjax.org/mathjax/latest/MathJax.js?config=TeX-AMS-MML_HTMLorMML">
+</script>
+
+
+  </div>
+  <script id="dsq-count-scr" src="//yeephycho.disqus.com/count.js#disqus_thread" async></script>
+</body>
+</html>
