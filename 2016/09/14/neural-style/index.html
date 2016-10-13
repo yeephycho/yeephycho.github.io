@@ -1,7 +1,7 @@
 <!DOCTYPE html>
 <html>
 <head>
-  <meta charset="utf-8">
+  <!-- hexo-inject:begin --><!-- hexo-inject:end --><meta charset="utf-8">
   
   <meta http-equiv="X-UA-Compatible" content="IE=edge" >
   <title>Neural Style -- A Computer Artist | yeephycho</title>
@@ -13,9 +13,11 @@
 <meta property="og:site_name" content="yeephycho">
 <meta property="og:description" content="This post is an introduction to neural style program. Neural style is a CNN based algorithm to apply an image’s style to another image, this it the most interenting program which is related to deep le">
 <meta property="og:image" content="http://yeephycho.github.io/blog_img/Von_Gogh_to_Monet.jpg">
+<meta property="og:image" content="http://yeephycho.github.io/blog_img/neural_style_math_1.jpg">
+<meta property="og:image" content="http://yeephycho.github.io/blog_img/neural_style.jpg">
 <meta property="og:image" content="http://yeephycho.github.io/blog_img/license.jpg">
 <meta property="og:image" content="http://yeephycho.github.io/blog_img/APACHE.jpg">
-<meta property="og:updated_time" content="2016-10-12T06:39:33.877Z">
+<meta property="og:updated_time" content="2016-10-13T04:02:18.889Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="Neural Style -- A Computer Artist">
 <meta name="twitter:description" content="This post is an introduction to neural style program. Neural style is a CNN based algorithm to apply an image’s style to another image, this it the most interenting program which is related to deep le">
@@ -26,11 +28,11 @@
   
     <link rel="icon" href="/favicon.png">
   
-  <link rel="stylesheet" href="/css/style.css">
+  <link rel="stylesheet" href="/css/style.css"><!-- hexo-inject:begin --><!-- hexo-inject:end -->
 </head>
 
 <body>
-  <div id="container">
+  <!-- hexo-inject:begin --><!-- hexo-inject:end --><div id="container">
     <div class="left-col">
     <div class="overlay"></div>
 <div class="intrude-less">
@@ -213,7 +215,7 @@
     
     <div class="article-entry" itemprop="articleBody">
       
-        <p>This post is an introduction to neural style program. Neural style is a CNN based algorithm to apply an image’s style to another image, this it the most interenting program which is related to deep learning I ever found. The source code is published on the Github, <a href="https://github.com/jcjohnson/neural-style" target="_blank" rel="external">Torch7 version</a> and <a href="https://github.com/anishathalye/neural-style" target="_blank" rel="external">tensorflow version</a>.<br>The related paper is <a href="http://www.cv-foundation.org/openaccess/content_cvpr_2016/papers/Gatys_Image_Style_Transfer_CVPR_2016_paper.pdf" target="_blank" rel="external">A Neural Algorithm of Artistic Style</a>, published on Sep. 2015, and <a href="https://arxiv.org/abs/1604.08610" target="_blank" rel="external">Artistic style transfer for videos</a>, published on Apr. 2016.<br>Allow me to show you some pictures here:<div align="center"><br><img src="http://yeephycho.github.io/blog_img/Von_Gogh_to_Monet.jpg" alt="Artistic Style Shift from Von Gogh to Monet"><br></div><br>Source first two images comes from the Internet, click on the <a href="http://www.wikiart.org/en/claude-monet/the-summer-poppy-field" target="_blank" rel="external">The Summer, Poppy Field</a> and the <a href="https://commons.wikimedia.org/wiki/File:Van_Gogh_-_Starry_Night_-_Google_Art_Project.jpg" target="_blank" rel="external">The Starry Night</a> to view the original image.<br><a id="more"></a><br>Recently, I found a website can do the same thing for you, click <a href="https://deepart.io/" target="_blank" rel="external">deepart</a> to get your own styled image! I believe this is a good advertise to amazon cloud service.<br>An mobile App named Prisma can also do that if you like.</p>
+        <p>This post is an introduction to neural style program. Neural style is a CNN based algorithm to apply an image’s style to another image, this it the most interenting program which is related to deep learning I ever found. The source code is published on the Github, <a href="https://github.com/jcjohnson/neural-style" target="_blank" rel="external">Torch7 version</a> and <a href="https://github.com/anishathalye/neural-style" target="_blank" rel="external">tensorflow version</a>.<br>The related papers are <a href="https://arxiv.org/abs/1508.06576" target="_blank" rel="external">A Neural Algorithm of Artistic Style</a> published on Sep. 2015, <a href="http://www.cv-foundation.org/openaccess/content_cvpr_2016/papers/Gatys_Image_Style_Transfer_CVPR_2016_paper.pdf" target="_blank" rel="external">Image Style Transfer Using Convolutional Neural Networks</a> published on 2016,  and for videos <a href="https://arxiv.org/abs/1604.08610" target="_blank" rel="external">Artistic style transfer for videos</a>, published on Apr. 2016.<br>Allow me to show you some pictures here:<div align="center"><br><img src="http://yeephycho.github.io/blog_img/Von_Gogh_to_Monet.jpg" alt="Artistic Style Shift from Von Gogh to Monet"><br></div><br>Source first two images comes from the Internet, click on the <a href="http://www.wikiart.org/en/claude-monet/the-summer-poppy-field" target="_blank" rel="external">The Summer, Poppy Field</a> and the <a href="https://commons.wikimedia.org/wiki/File:Van_Gogh_-_Starry_Night_-_Google_Art_Project.jpg" target="_blank" rel="external">The Starry Night</a> to view the original image.<br><a id="more"></a><br>Recently, I found a website can do the same thing for you, click <a href="https://deepart.io/" target="_blank" rel="external">deepart</a> to get your own styled image! I believe this is a good advertise to amazon cloud service.<br>An mobile App named Prisma can also do that if you like.</p>
 <h2 id="Principle"><a href="#Principle" class="headerlink" title="Principle"></a>Principle</h2><p>Here I’m going to describe the math behind the neural style program. I assume that the reader has the basic knowledge on convolutional neural network and <a href="https://arxiv.org/pdf/1409.1556.pdf" target="_blank" rel="external">VGG net</a>.</p>
 <h3 id="Inputs-Outputs-and-Other-Things-You-Need"><a href="#Inputs-Outputs-and-Other-Things-You-Need" class="headerlink" title="Inputs, Outputs and Other Things You Need"></a>Inputs, Outputs and Other Things You Need</h3><p>To make the algorithm work, you need the following input components:</p>
 <ul>
@@ -226,7 +228,9 @@
 <ul>
 <li>A output image which contains the content of the target image and the style of the style image.</li>
 </ul>
-<h3 id="Deal-With-The-VGG-Model"><a href="#Deal-With-The-VGG-Model" class="headerlink" title="Deal With The VGG Model"></a>Deal With The VGG Model</h3><p>As we all know that VGG net is a very influential convolutional neural network architecture aims at image classification, segmentation or image object localization. In this program, you need a pre-trained VGG net on the image classification. Both the Torch version and the Tensorflow version provide the pre-trained model.<br>This algorithm uses VGG-19 model, it contains 16 conv. (with activations) layers and 5 pooling layers, the difference is that neural style algorithm doesn’t require fully connected layer as classification algorithm, so at the last of the network, fully connected layer can be removed directly, the output of final layer should be feature maps of the conv. net.<br>Another difference is that they replace maxpooling which is applied in classification with the average pooling, they claim that average pooling gives more appealing outcome.<br>TBC…</p>
+<h3 id="Deal-With-The-VGG-Model"><a href="#Deal-With-The-VGG-Model" class="headerlink" title="Deal With The VGG Model"></a>Deal With The VGG Model</h3><p>As we all know that VGG net is a very influential convolutional neural network architecture aims at image classification, segmentation or image object localization. In this program, you need a pre-trained VGG net on the image classification. Both the Torch version and the Tensorflow version provide the pre-trained model.<br>This algorithm uses VGG-19 model, it contains 16 conv. (with activations) layers and 5 pooling layers, the difference is that neural style algorithm doesn’t require fully connected layer as classification algorithm, so at the last of the network, fully connected layer can be removed directly, the output of final layer should be feature maps of the conv. net.<br>Another difference is that they replace maxpooling which is applied in classification with the average pooling, they claim that average pooling gives more appealing outcome.</p>
+<h3 id="Content-Representation"><a href="#Content-Representation" class="headerlink" title="Content Representation"></a>Content Representation</h3><p>Feed the content image to the VGG net, at each layer of the network, we can get feature maps, the deeper the network, the more abstract the feature maps are, but generally speaking, we presume that these feature maps contain the content information of the content image, in fact, these feature maps contains the features of the contents of the original image, these features are good enough to represet the content of the original image.<br>Lets’s say, after the <strong><em>l</em></strong> th conv. layer in VGG net, there are <strong><em>N</em></strong> conv. feature maps, each feature maps has the size of <strong><em>M</em></strong>, <strong><em>M</em></strong> comes from the width times height of a feature map. We use:<div align="center"><br><img src="http://yeephycho.github.io/blog_img/neural_style_math_1.jpg" alt="Neural Style formula"><br></div></p>
+<h3 id="Style-Representation"><a href="#Style-Representation" class="headerlink" title="Style Representation"></a>Style Representation</h3><h3 id="Whole-Process"><a href="#Whole-Process" class="headerlink" title="Whole Process"></a>Whole Process</h3><p>The transfer process can be shown as follows:<div align="center"><br><img src="http://yeephycho.github.io/blog_img/neural_style.jpg" alt="Neural Style Transfer"><br></div></p>
 <p><br></p>
 <h2 id="License"><a href="#License" class="headerlink" title="License"></a>License</h2><div align="center"><br>The content of this blog itself is licensed under the <a href="https://creativecommons.org/licenses/by-sa/4.0/" target="_blank" rel="external">Creative Commons Attribution 4.0 International License</a>.<br><img src="http://yeephycho.github.io/blog_img/license.jpg" alt="CC-BY-SA LICENCES"><br><br>The containing source code (if applicable) and the source code used to format and display that content is licensed under the <a href="http://www.apache.org/licenses/LICENSE-2.0" target="_blank" rel="external">Apache License 2.0</a>.<br><strong>Copyright [2016] [yeephycho]</strong><br>Licensed under the Apache License, Version 2.0 (the “License”);<br>you may not use this file except in compliance with the License.<br>You may obtain a copy of the License at<br><a href="http://www.apache.org/licenses/LICENSE-2.0" target="_blank" rel="external">Apache License 2.0</a><br>Unless required by applicable law or agreed to in writing, software<br>distributed under the License is distributed on an “AS IS” BASIS,<br>WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either<br>express or implied. See the License for the specific language<br>governing permissions and limitations under the License.<br><img src="http://yeephycho.github.io/blog_img/APACHE.jpg" alt="APACHE LICENCES"><br></div>
       
@@ -354,6 +358,23 @@ MathJax.Hub.Queue(function() {
 
 
   </div>
-  <script id="dsq-count-scr" src="//yeephycho.disqus.com/count.js#disqus_thread" async></script>
+  <script id="dsq-count-scr" src="//yeephycho.disqus.com/count.js#disqus_thread" async></script><!-- hexo-inject:begin --><!-- Begin: Injected MathJax -->
+<script type="text/x-mathjax-config">
+  MathJax.Hub.Config({"tex2jax":{"inlineMath":[["$","$"],["\\(","\\)"]],"skipTags":["script","noscript","style","textarea","pre","code"],"processEscapes":true},"TeX":{"equationNumbers":{"autoNumber":"AMS"}}});
+</script>
+
+<script type="text/x-mathjax-config">
+  MathJax.Hub.Queue(function() {
+    var all = MathJax.Hub.getAllJax(), i;
+    for(i=0; i < all.length; i += 1) {
+      all[i].SourceElement().parentNode.className += ' has-jax';
+    }
+  });
+</script>
+
+<script type="text/javascript" src="//cdn.mathjax.org/mathjax/latest/MathJax.js?config=TeX-AMS-MML_HTMLorMML">
+</script>
+<!-- End: Injected MathJax -->
+<!-- hexo-inject:end -->
 </body>
 </html>
