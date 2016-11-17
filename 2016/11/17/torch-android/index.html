@@ -4,17 +4,18 @@
   <!-- hexo-inject:begin --><!-- hexo-inject:end --><meta charset="utf-8">
   
   <meta http-equiv="X-UA-Compatible" content="IE=edge" >
-  <title>Tag: VGGNet | yeephycho</title>
+  <title>How to Compile Torch-Android with OpenBLAS Support | yeephycho</title>
   <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
-  <meta name="description" content="github blog about Hight Performance Computing, OpenCL/CUDA, OpenMP/Pthread etc. and Machine Learning/Convolution Neural_Network etc.">
-<meta property="og:type" content="website">
-<meta property="og:title" content="yeephycho">
-<meta property="og:url" content="http://yeephycho.github.io/tags/VGGNet/index.html">
+  <meta name="description" content="This post aims to provide a practical guidance to how to compile Torch-Android deep learning tool with OpenBLAS support.">
+<meta property="og:type" content="article">
+<meta property="og:title" content="How to Compile Torch-Android with OpenBLAS Support">
+<meta property="og:url" content="http://yeephycho.github.io/2016/11/17/torch-android/index.html">
 <meta property="og:site_name" content="yeephycho">
-<meta property="og:description" content="github blog about Hight Performance Computing, OpenCL/CUDA, OpenMP/Pthread etc. and Machine Learning/Convolution Neural_Network etc.">
+<meta property="og:description" content="This post aims to provide a practical guidance to how to compile Torch-Android deep learning tool with OpenBLAS support.">
+<meta property="og:updated_time" content="2016-11-17T08:49:31.994Z">
 <meta name="twitter:card" content="summary">
-<meta name="twitter:title" content="yeephycho">
-<meta name="twitter:description" content="github blog about Hight Performance Computing, OpenCL/CUDA, OpenMP/Pthread etc. and Machine Learning/Convolution Neural_Network etc.">
+<meta name="twitter:title" content="How to Compile Torch-Android with OpenBLAS Support">
+<meta name="twitter:description" content="This post aims to provide a practical guidance to how to compile Torch-Android deep learning tool with OpenBLAS support.">
   
     <link rel="alternative" href="/atom.xml" title="yeephycho" type="application/atom+xml">
   
@@ -171,53 +172,95 @@
 	</div>
 </nav>
 
-      <div class="body-wrap">
+      <div class="body-wrap"><article id="post-torch-android" class="article article-type-post" itemscope itemprop="blogPost">
   
-  
-    
-    
-      
-      
-      <section class="archives-wrap">
-        <div class="archive-year-wrap">
-          <a href="/archives/2016" class="archive-year">2016</a>
-        </div>
-        <div class="archives">
-    
-    <article class="archive-article archive-type-post">
-  <div class="archive-article-inner">
-    <header class="archive-article-header">
-      	<div class="article-meta">
-	      	<a href="/2016/08/31/A-reminder-of-algorithms-in-Convolutional-Neural-Networks-and-their-influences-III/" class="archive-article-date">
-  	<time datetime="2016-08-31T11:36:10.000Z" itemprop="datePublished">Aug 31</time>
+    <div class="article-meta">
+      <a href="/2016/11/17/torch-android/" class="article-date">
+  	<time datetime="2016-11-17T11:41:40.000Z" itemprop="datePublished">2016-11-17</time>
 </a>
-        </div>
-    	 
+    </div>
   
-    <h1 itemprop="name">
-      <a class="archive-article-title" href="/2016/08/31/A-reminder-of-algorithms-in-Convolutional-Neural-Networks-and-their-influences-III/">A Note to Techniques in Convolutional Neural Networks and Their Influences III (paper summary)</a>
+  <div class="article-inner">
+    
+      <input type="hidden" class="isFancy" />
+    
+    
+      <header class="article-header">
+        
+  
+    <h1 class="article-title" itemprop="name">
+      How to Compile Torch-Android with OpenBLAS Support
     </h1>
   
 
-        <div class="article-info info-on-right">
-          
+      </header>
+      
+      <div class="article-info article-info-post">
+        
 	<div class="article-tag tagcloud">
-		<ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/Convolutional-Neural-Network/">Convolutional Neural Network</a></li><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/Inception-v4/">Inception-v4</a></li><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/MLPCONV/">MLPCONV</a></li><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/VGGNet/">VGGNet</a></li><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/ZFNet/">ZFNet</a></li></ul>
+		<ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/Machine-Learning/">Machine Learning</a></li><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/OpenBLAS/">OpenBLAS</a></li><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/Torch-Android/">Torch-Android</a></li></ul>
 	</div>
 
-          
+        
 
-        </div>
         <div class="clearfix"></div>
-    </header>
-  </div>
-</article>
-  
-  
-    </div></section>
-  
-
+      </div>
+      
     
+    <div class="article-entry" itemprop="articleBody">
+      
+        <p>This post aims to provide a practical guidance to how to compile Torch-Android deep learning tool with OpenBLAS support.</p>
+
+      
+    </div>
+    
+  </div>
+  
+    
+<nav id="article-nav">
+  
+    <a href="/2090/06/07/my_first_blog/" id="article-nav-newer" class="article-nav-link-wrap">
+      <strong class="article-nav-caption"><</strong>
+      <div class="article-nav-title">
+        
+          Welcome to Yeephycho&#39;s Blog
+        
+      </div>
+    </a>
+  
+  
+    <a href="/2016/10/20/How-to-Use-NDK-to-Build-A-Shared-Android_Native-Library/" id="article-nav-older" class="article-nav-link-wrap">
+      <div class="article-nav-title">How to Use NDK to Build A shared Android Native Library</div>
+      <strong class="article-nav-caption">></strong>
+    </a>
+  
+</nav>
+
+  
+</article>
+
+
+
+
+
+
+
+
+<section id="comments">
+  <div id="disqus_thread"></div>
+    <script type="text/javascript">
+    /* * * CONFIGURATION VARIABLES: EDIT BEFORE PASTING INTO YOUR WEBPAGE * * */
+    var disqus_shortname = 'yeephycho'; // required: replace example with your forum shortname
+
+    /* * * DON'T EDIT BELOW THIS LINE * * */
+    (function() {
+      var dsq = document.createElement('script'); dsq.type = 'text/javascript'; dsq.async = true;
+      dsq.src = '//' + disqus_shortname + '.disqus.com/embed.js';
+      (document.getElementsByTagName('head')[0] || document.getElementsByTagName('body')[0]).appendChild(dsq);
+    })();
+  </script>
+  <noscript>Please enable JavaScript to view the <a href="https://disqus.com/?ref_noscript">comments powered by Disqus.</a></noscript>
+</section>
 
 </div>
       <footer id="footer">
@@ -243,9 +286,9 @@
 		mathjax: true,
 		animate: true,
 		isHome: false,
-		isPost: false,
+		isPost: true,
 		isArchive: false,
-		isTag: true,
+		isTag: false,
 		isCategory: false,
 		open_in_new: true
 	}
