@@ -4,20 +4,20 @@
   <!-- hexo-inject:begin --><!-- hexo-inject:end --><meta charset="utf-8">
   
   <meta http-equiv="X-UA-Compatible" content="IE=edge" >
-  <title>How to Compile Torch-Android with OpenBLAS Support | yeephycho</title>
+  <title>A Quick GDB Tutorial | yeephycho</title>
   <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
-  <meta name="description" content="This post aims to provide a practical guidance to how to compile Torch-Android deep learning tool with OpenBLAS support. All the procedure is target for UNIX-like environment.I presume that you know w">
+  <meta name="description" content="This post will summary some loss functions which are used in training a neural network.">
 <meta property="og:type" content="article">
-<meta property="og:title" content="How to Compile Torch-Android with OpenBLAS Support">
-<meta property="og:url" content="http://yeephycho.github.io/2016/11/17/torch-android/index.html">
+<meta property="og:title" content="A Quick GDB Tutorial">
+<meta property="og:url" content="http://yeephycho.github.io/2017/09/16/Loss-Functions-In-Deep-Learning/index.html">
 <meta property="og:site_name" content="yeephycho">
-<meta property="og:description" content="This post aims to provide a practical guidance to how to compile Torch-Android deep learning tool with OpenBLAS support. All the procedure is target for UNIX-like environment.I presume that you know w">
+<meta property="og:description" content="This post will summary some loss functions which are used in training a neural network.">
 <meta property="og:image" content="http://yeephycho.github.io/blog_img/license.jpg">
 <meta property="og:image" content="http://yeephycho.github.io/blog_img/APACHE.jpg">
-<meta property="og:updated_time" content="2016-11-24T09:02:12.000Z">
+<meta property="og:updated_time" content="2017-09-16T12:12:58.000Z">
 <meta name="twitter:card" content="summary">
-<meta name="twitter:title" content="How to Compile Torch-Android with OpenBLAS Support">
-<meta name="twitter:description" content="This post aims to provide a practical guidance to how to compile Torch-Android deep learning tool with OpenBLAS support. All the procedure is target for UNIX-like environment.I presume that you know w">
+<meta name="twitter:title" content="A Quick GDB Tutorial">
+<meta name="twitter:description" content="This post will summary some loss functions which are used in training a neural network.">
 <meta name="twitter:image" content="http://yeephycho.github.io/blog_img/license.jpg">
   
     <link rel="alternative" href="/atom.xml" title="yeephycho" type="application/atom+xml">
@@ -175,11 +175,11 @@
 	</div>
 </nav>
 
-      <div class="body-wrap"><article id="post-torch-android" class="article article-type-post" itemscope itemprop="blogPost">
+      <div class="body-wrap"><article id="post-Loss-Functions-In-Deep-Learning" class="article article-type-post" itemscope itemprop="blogPost">
   
     <div class="article-meta">
-      <a href="/2016/11/17/torch-android/" class="article-date">
-  	<time datetime="2016-11-17T11:41:40.000Z" itemprop="datePublished">2016-11-17</time>
+      <a href="/2017/09/16/Loss-Functions-In-Deep-Learning/" class="article-date">
+  	<time datetime="2017-09-16T11:16:08.000Z" itemprop="datePublished">2017-09-16</time>
 </a>
     </div>
   
@@ -192,7 +192,7 @@
         
   
     <h1 class="article-title" itemprop="name">
-      How to Compile Torch-Android with OpenBLAS Support
+      A Quick GDB Tutorial
     </h1>
   
 
@@ -201,7 +201,7 @@
       <div class="article-info article-info-post">
         
 	<div class="article-tag tagcloud">
-		<ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/Machine-Learning/">Machine Learning</a></li><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/OpenBLAS/">OpenBLAS</a></li><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/Torch-Android/">Torch-Android</a></li></ul>
+		<ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/Deep-Learning/">Deep Learning</a></li><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/Loss-Function/">Loss Function</a></li></ul>
 	</div>
 
         
@@ -212,29 +212,24 @@
     
     <div class="article-entry" itemprop="articleBody">
       
-        <p>This post aims to provide a practical guidance to how to compile Torch-Android deep learning tool with OpenBLAS support. All the procedure is target for UNIX-like environment.<br>I presume that you know what <a href="http://www.netlib.org/blas/" target="_blank" rel="external">BLAS</a> or <a href="http://www.openblas.net/" target="_blank" rel="external">OpenBLAS</a> is, if you don’t click the blue word to find out.</p>
-<h2 id="Prepare-Source-Code"><a href="#Prepare-Source-Code" class="headerlink" title="Prepare Source Code"></a>Prepare Source Code</h2><p>You can find OpenBLAS on <a href="https://github.com/xianyi/OpenBLAS" target="_blank" rel="external">Github OpenBLAS’s repo.</a>.<br>Get the source code by Git.</p>
-<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">git <span class="built_in">clone</span> https://github.com/xianyi/OpenBLAS.git</span><br></pre></td></tr></table></figure>
+        <p>This post will summary some loss functions which are used in training a neural network.<br></p>
 <a id="more"></a>
-<p>If this link doesn’t work for some reason, (I believe this project will keep going on, people are still working on it, I cannot guarantee today’s compiling method will work for tomorrow.) You can find a forked version by:</p>
-<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">git <span class="built_in">clone</span> https://github.com/yeephycho/OpenBLAS.git</span><br></pre></td></tr></table></figure>
-<h2 id="Set-Up-Environment-for-OpenBLAS"><a href="#Set-Up-Environment-for-OpenBLAS" class="headerlink" title="Set Up Environment for OpenBLAS"></a>Set Up Environment for OpenBLAS</h2><p>Because we are going to compile the source code under Android environment, so I suppose you have already downloaded Android NDK which will be used as the compiling tool for the OpenBLAS.<br>First, tell the NDK compiler where to find the system environment, basic C header files and libraries will be found under this environment, you can find this environment under NDK folder.</p>
-<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line"><span class="built_in">export</span> CFLAGS=--sysroot=/path/to/your/android/ndk/platforms/android-21/arch-arm</span><br><span class="line"><span class="comment"># For me the example is:</span></span><br><span class="line"><span class="built_in">export</span> CFLAGS=--sysroot=/hom/yeephycho/Android/android-ndk-r11/platforms/android-21/arch-arm</span><br></pre></td></tr></table></figure>
-<p>Next, set OpenMP multi-thread environment variables if you like.</p>
-<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment"># Enable OpenMP.</span></span><br><span class="line"><span class="built_in">export</span> USE_OPENMP=1</span><br><span class="line"><span class="comment"># Set OpenMP thread number according to your OS and hardware platform.</span></span><br><span class="line"><span class="built_in">export</span> OMP_NUM_THREADS=8</span><br></pre></td></tr></table></figure>
-<h2 id="Compile-OpenBLAS-without-Fortran"><a href="#Compile-OpenBLAS-without-Fortran" class="headerlink" title="Compile OpenBLAS without Fortran."></a>Compile OpenBLAS without Fortran.</h2><p>BLAS was originally writen by Fortran. But NDK doesn’t provide Fortran support, it means that there’s no Fortran compiler under Android environment. So, what we are going to do is to compile the C version OpenBLAS.<br>According to the <a href="https://github.com/xianyi/OpenBLAS/wiki/How-to-build-OpenBLAS-for-Android" target="_blank" rel="external">OpenBLAS-Android main page</a>.</p>
-<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line"><span class="built_in">cd</span> OpenBLAS</span><br><span class="line">make TARGET=ARMV7 HOSTCC=gcc CC=/path/to/your/android/ndk/toolchains/arm-linux-androideabi-4.9/prebuilt/linux-x86_64/bin/arm-linux-androideabi-gcc NOFORTRAN=1</span><br><span class="line"><span class="comment"># For me, the example is:</span></span><br><span class="line">make TARGET=ARMV7 HOSTCC=gcc CC=/home/yeephycho/Android/android-ndk-r11/toolchains/arm-linux-androideabi-4.9/prebuilt/linux-x86_64/bin/arm-linux-androideabi-gcc NOFORTRAN=1</span><br></pre></td></tr></table></figure>
-<p>Change the above path according to your environment, NDK path and Android NDK version.</p>
-<p>Compiling should begin at this time. Wait for a moment, it will take a few minutes.<br>After compiling finished, install OpenBLAS to a specific folder.</p>
-<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">make PREFIX=/path/to/your/installation/ install</span><br><span class="line"><span class="comment"># For me, the example is:</span></span><br><span class="line">make PREFIX=/home/yeephycho/Desktop/OpenBLAS_Installation</span><br><span class="line"><span class="comment"># Make sure the folder exists.</span></span><br></pre></td></tr></table></figure>
-<p>Now, we have a OpenBLAS library and associated include files under the installation folder.</p>
-<h2 id="Compile-Torch-Android"><a href="#Compile-Torch-Android" class="headerlink" title="Compile Torch-Android"></a>Compile Torch-Android</h2><p>This part is relatively difficult to write because just a few days ago, I tried to git clone Torch-Android project from github, the project cannot be compiled any more. Because of some links has already out of date. I never tested it, but there are some saying claims that the missing folder can be download manually or just copy from the linux version’s Torch project.<br>So, if you are lucky enough to have an older version without OpenBLAS support. You can try to do the followings to add OpenBLAS support:<br>Try to find out which android environment is used by your NDK. Under my environment it is (I don’t realy know how to make sure of it, try to find it out from the messages of build.sh during execution? Or maybe you can try to set the NDK platform version by add an Application.mk file under the project?):<br>Anyway, the thing that you need to do is just to copy the compiled OpenBLAS include file and libraries from your installation folder to the environment folder. Paste and copy will work.<br><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">cp /home/yeephycho/Desktop/OpenBLAS_Installation/include/* /home/yeephycho/Android/android-ndk-r11/platforms/android-8/arch-arm/usr/include/</span><br><span class="line">cp /home/yeephycho/Desktop/OpenBLAS_Installation/lib/* /home/yeephycho/Android/android-ndk-r11/platforms/android-8/arch-arm/usr/lib/</span><br></pre></td></tr></table></figure></p>
-<p>Then, try to run build.sh from your torch-android folder.<br>If it says that “No rule to make target ‘install’. Stop.”, just run it again.</p>
-<h2 id="Follow-ups"><a href="#Follow-ups" class="headerlink" title="Follow ups"></a>Follow ups</h2><p>I hope this post can be of help, but, acctual, there’s some details missing because of the torch-android’s problem.<br>I’d glad to provide necessary help if anyone need any. My e-mail is: huyixuanhyx@gmail.com.</p>
-<p>Cheers!</p>
+<h2 id="Create-Project"><a href="#Create-Project" class="headerlink" title="Create Project"></a>Create Project</h2><h3 id="Create-Workspace"><a href="#Create-Workspace" class="headerlink" title="Create Workspace"></a>Create Workspace</h3><p>To get start, first let’s create a workspace. Press <strong>Ctrl + Alt + t</strong> to open a Terminal.<br><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><span class="line">mkdir workspace <span class="comment"># create a directory under current directory</span></span><br><span class="line"><span class="built_in">cd</span> workspace <span class="comment"># enter the directory</span></span><br><span class="line">mkdir learnGDB <span class="comment"># create a directory for GDB learning</span></span><br><span class="line"><span class="built_in">cd</span> learnGDB <span class="comment"># enter the above directory</span></span><br><span class="line"></span><br><span class="line">touch main.cc <span class="comment"># create a main file</span></span><br><span class="line">touch foo.cc <span class="comment"># create a c file</span></span><br><span class="line">touch foo.h <span class="comment"># create a header file</span></span><br></pre></td></tr></table></figure></p>
+<h3 id="Edit-Code"><a href="#Edit-Code" class="headerlink" title="Edit Code"></a>Edit Code</h3><p>The following code is used to demonstrate the usage of the GDB. From main program call a function, the function returns a const integer. If you are a <a href="http://www.vim.org/" target="_blank" rel="external">Vim</a> newbee, google how to use vim to edit the C file.<br>Follows the previous progress, in the terminal:<br><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">vim main.cc</span><br></pre></td></tr></table></figure></p>
+<p>Write the following code.<br><figure class="highlight c"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">#<span class="meta-keyword">include</span> <span class="meta-string">&lt;stdio.h&gt;</span></span></span><br><span class="line"><span class="meta">#<span class="meta-keyword">include</span> <span class="meta-string">&lt;foo.h&gt;</span></span></span><br><span class="line"></span><br><span class="line"><span class="function"><span class="keyword">int</span> <span class="title">main</span><span class="params">(<span class="keyword">int</span> argc, <span class="keyword">char</span>* argv[])</span></span>&#123;</span><br><span class="line">    <span class="keyword">int</span> z = <span class="number">2</span>;</span><br><span class="line"></span><br><span class="line">    <span class="keyword">int</span>* x = &amp;z;</span><br><span class="line">    <span class="keyword">int</span>* y = &amp;z;</span><br><span class="line"></span><br><span class="line">    z = foo(x, y);</span><br><span class="line"></span><br><span class="line">    <span class="built_in">printf</span>(<span class="string">"z = %d\n"</span>, z);</span><br><span class="line"></span><br><span class="line">    <span class="keyword">return</span> <span class="number">0</span>;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure></p>
+<p>Quit vim (Esc, :wq, Enter). Edit header file.<br><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">vim foo.h</span><br></pre></td></tr></table></figure></p>
+<p>Write program<br><figure class="highlight c"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">#<span class="meta-keyword">ifndef</span> FOO_H</span></span><br><span class="line"><span class="meta">#<span class="meta-keyword">define</span> FOO_H</span></span><br><span class="line"></span><br><span class="line"><span class="function"><span class="keyword">int</span> <span class="title">foo</span><span class="params">(<span class="keyword">int</span>* x, <span class="keyword">int</span>* y)</span></span>;</span><br><span class="line"></span><br><span class="line"><span class="meta">#<span class="meta-keyword">endif</span> <span class="comment">// #ifndef FOO_H</span></span></span><br></pre></td></tr></table></figure></p>
+<p>Quit vim (Esc, :wq, Enter).<br><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">vim foo.cc</span><br></pre></td></tr></table></figure></p>
+<p>Edit the c function code.<br><figure class="highlight c"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">#<span class="meta-keyword">include</span> <span class="meta-string">&lt;foo.h&gt;</span></span></span><br><span class="line"></span><br><span class="line"><span class="function"><span class="keyword">int</span> <span class="title">foo</span><span class="params">(<span class="keyword">int</span>* x, <span class="keyword">int</span>* y)</span></span>&#123;</span><br><span class="line">    *x = <span class="number">0</span>;</span><br><span class="line">    *y = <span class="number">1</span>;</span><br><span class="line"></span><br><span class="line">    <span class="keyword">return</span> *x;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure></p>
+<p>Quit vim (Esc, :wq, Enter).</p>
+<h3 id="Compile-Project"><a href="#Compile-Project" class="headerlink" title="Compile Project"></a>Compile Project</h3><p>Under the work directory.<br><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br></pre></td><td class="code"><pre><span class="line">gcc -I./ -g foo.cc main.cc -o learnGDB -std=c99</span><br><span class="line">:&lt;&lt;<span class="string">'BLOCK  </span><br><span class="line">........ This is comments ............</span><br><span class="line">.... gcc is the compiler</span><br><span class="line">.... -I./ means to search the current directory for files.</span><br><span class="line">.... -g means keep debug information, this is the prerequest of using GDB</span><br><span class="line">.... -o learnGDB means output binary is learnGDB</span><br><span class="line">.... -std=c99 means using c99 standard.</span><br><span class="line">........ This is the end of comments ............</span><br><span class="line">BLOCK'</span></span><br><span class="line"></span><br><span class="line">./learnGDB</span><br><span class="line">z = 1</span><br></pre></td></tr></table></figure></p>
+<p>If you can have “z = 1” on terminal, then it works.</p>
+<h2 id="Using-GDB"><a href="#Using-GDB" class="headerlink" title="Using GDB"></a>Using GDB</h2><p>Under the same directory.<br><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br></pre></td><td class="code"><pre><span class="line">gdb learnGDB</span><br><span class="line">b main</span><br><span class="line">r</span><br><span class="line">n</span><br><span class="line">l</span><br><span class="line">b foo</span><br><span class="line">c</span><br><span class="line">n</span><br><span class="line">n</span><br><span class="line">...</span><br><span class="line">n</span><br><span class="line"><span class="built_in">exit</span></span><br></pre></td></tr></table></figure></p>
+<p>gdb learnGDB means use gdb to start debug.<br>b main means add break point at the main function.<br>r means start to run<br>l means list the program<br>b foo means add break point at the foo function.<br>c means continue until meets the next break point.<br>n means next step.<br>exit means step out of gdb.</p>
+<h2 id="Other-useful-commands"><a href="#Other-useful-commands" class="headerlink" title="Other useful commands"></a>Other useful commands</h2><p>gdb -tui learnGDB: use UI to do the debugging.<br>step (s): step into a function.<br>until (u): step out of the for loop.<br>until + line number: run to the specified line.<br>finish: run until the current function returns.<br>call: call a visable function in the current program. e.g. call foo(3, 4).<br>break n: add a break point at the nth line.<br>print a: print variable a’s value.<br>watch: Run the program if the being watched variable’s value changed. e.g. watch a.<br>layout asm: display disassembly code.<br>clear: clear break points.<br>…<br>More commands can be found <a href="http://www.yolinux.com/TUTORIALS/GDB-Commands.html" target="_blank" rel="external">gdb commands cheat sheet</a>.</p>
+<p>Listen to the music and take a break. [Somewhere] of July. Cheers~<br><div class="video-container"><iframe src="//www.youtube.com/embed/E-9P_VLlF9U" frameborder="0" allowfullscreen></iframe></div></p>
 <p><br></p>
 <h2 id="License"><a href="#License" class="headerlink" title="License"></a>License</h2><div align="center"><br>The content of this blog itself is licensed under the <a href="https://creativecommons.org/licenses/by-sa/4.0/" target="_blank" rel="external">Creative Commons Attribution 4.0 International License</a>.<br><img src="http://yeephycho.github.io/blog_img/license.jpg" alt="CC-BY-SA LICENCES"><br><br>The containing source code (if applicable) and the source code used to format and display that content is licensed under the <a href="http://www.apache.org/licenses/LICENSE-2.0" target="_blank" rel="external">Apache License 2.0</a>.<br><strong>Copyright [2016] [yeephycho]</strong><br>Licensed under the Apache License, Version 2.0 (the “License”);<br>you may not use this file except in compliance with the License.<br>You may obtain a copy of the License at<br><a href="http://www.apache.org/licenses/LICENSE-2.0" target="_blank" rel="external">Apache License 2.0</a><br>Unless required by applicable law or agreed to in writing, software<br>distributed under the License is distributed on an “AS IS” BASIS,<br>WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either<br>express or implied. See the License for the specific language<br>governing permissions and limitations under the License.<br><img src="http://yeephycho.github.io/blog_img/APACHE.jpg" alt="APACHE LICENCES"><br></div>
-
 
       
     </div>
@@ -244,18 +239,18 @@
     
 <nav id="article-nav">
   
-    <a href="/2017/09/16/Loss-Functions-In-Deep-Learning/" id="article-nav-newer" class="article-nav-link-wrap">
+    <a href="/2090/06/07/my_first_blog/" id="article-nav-newer" class="article-nav-link-wrap">
       <strong class="article-nav-caption"><</strong>
       <div class="article-nav-title">
         
-          A Quick GDB Tutorial
+          Welcome to Yeephycho&#39;s Blog
         
       </div>
     </a>
   
   
-    <a href="/2016/10/20/How-to-Use-NDK-to-Build-A-Shared-Android_Native-Library/" id="article-nav-older" class="article-nav-link-wrap">
-      <div class="article-nav-title">How to Use NDK to Build A shared Android Native Library</div>
+    <a href="/2016/11/17/torch-android/" id="article-nav-older" class="article-nav-link-wrap">
+      <div class="article-nav-title">How to Compile Torch-Android with OpenBLAS Support</div>
       <strong class="article-nav-caption">></strong>
     </a>
   
